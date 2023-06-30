@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --animation-depth: 1rem;
+  --animation-time: 0.5s;
+  --animation-delay: 0.3s;
+}
+
+.slide-up-fade-in {
+  opacity: 0;
+  animation: fadeSlideUp var(--animation-time) ease-in-out forwards
+    var(--animation-delay);
+}
+
+.slide-up-fade-in-container {
+  animation: fadeSlideUpContainer var(--animation-time) ease-in-out forwards;
+}
+
+@keyframes fadeSlideUpContainer {
+  from {
+    transform: translateY(var(--animation-depth));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(var(--animation-depth));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
