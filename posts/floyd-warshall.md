@@ -4,8 +4,6 @@ subtitle: "The Floyd-Warshall algorithm is another classic algorithm in computer
 date: "2023-07-25"
 ---
 
-## Floyd-Warshall Algorithm
-
 The Floyd-Warshall algorithm is an algorithm for finding the shortest paths between all pairs of nodes in a weighted graph. It is a dynamic programming algorithm, which means that it works by building up the shortest paths from scratch, starting with the shortest paths between pairs of nodes that are directly connected.
 
 ```cpp
@@ -163,7 +161,7 @@ The code snippet can be used to find the shortest paths between all pairs of nod
 
 **Here is an example of how to use the code:**
 
-```c++
+```cpp
 vector<vector<int>> graph = {{0, 3, Util::INFINITY, 7},
                               {8, 0, 2, Util::INFINITY},
                               {5, Util::INFINITY, 0, 1},
@@ -187,7 +185,7 @@ FloydWarshall::printPath(path);
 
 This code will print the following output:
 
-```
+```console
 Shortest path from 1 to 3 : 1 -> 2 -> 3
 Shortest path from 0 to 2 : 0 -> 2
 Shortest path from 3 to 2 : 3 -> 2
