@@ -5,6 +5,7 @@ import { getPostMetadata, getPostMetadataByName } from "@/lib/postMetadata";
 import { Metadata } from "next";
 
 import Post from "./Post";
+import { formatDateString } from "@/lib/formatter";
 
 export const generateStaticParams = () => {
   const posts = getPostMetadata();
@@ -31,7 +32,7 @@ const PostPage = (props: any) => {
     <div>
       <div className="pb-6 mt-12 mb-6 text-center border-b border-slate-300 text-slate-400">
         <h1 className="text-2xl text-slate-600 ">{post.data.title}</h1>
-        <p className="mt-2 text-slate-500">{post.data.date}</p>
+        <p className="mt-2 text-slate-500">{formatDateString(post.data.date)}</p>
       </div>
 
       <Post content={post.content} />

@@ -2,6 +2,7 @@ import fs, { PathLike } from "fs";
 import matter from "gray-matter";
 import { PostMetadata } from "@/types/PostMetadata";
 import env from "@/env";
+import { formatDateString } from "./formatter";
 
 export const getPostMetadata = (): PostMetadata[] => {
   const files = fs.readdirSync(env.POSTS_DIR as PathLike);
@@ -16,7 +17,7 @@ export const getPostMetadata = (): PostMetadata[] => {
     const matterResult = matter(fileContents);
     return {
       title: matterResult.data.title,
-      date: matterResult.data.date,
+      date: formatDateString(matterResult.data.date),
       subtitle: matterResult.data.subtitle,
       slug: fileName.replace(".md", ""),
     };

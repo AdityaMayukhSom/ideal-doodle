@@ -4,17 +4,17 @@ subtitle: "The Floyd-Warshall algorithm is another classic algorithm in computer
 date: "2023-07-25"
 ---
 
-The Floyd-Warshall algorithm is an algorithm for finding the shortest paths between all pairs of nodes in a weighted graph. It is a dynamic programming algorithm, which means that it works by building up the shortest paths from scratch, starting with the shortest paths between pairs of nodes that are directly connected.
+Graphs are commonly used to represent relationships between entities in various real-world scenarios, such as road networks, computer networks, and social networks. The shortest path problem involves finding the shortest distance between every pair of vertices in a graph.
+
+The Floyd-Warshall algorithm is a powerful tool for finding the shortest paths between all pairs of nodes in a weighted graph. It efficiently solves the all-pairs shortest path problem, making it a fundamental algorithm in graph theory.
+
+Unlike Djikstra's algorithm, which finds the shortest path from one source vertex to all other vertices, the Floyd-Warshall algorithm considers every pair of vertices and efficiently computes the shortest path between them.
+
+### Code Implementation
+
+First we define a `Util` class for several helper methods and variabled which we will be using later. Instead of defining `INFINITY`, you may also use `INT_MAX` which is provided in `limits.h` header file.
 
 ```cpp
-// C++ program to find the shortest
-// path between any two nodes using
-// Floyd Warshall Algorithm.
-#include <iostream>
-#include <vector>
-
-using namespace std;
-
 class Util {
    public:
     static const int INFINITY = 1e9 + 7;
@@ -37,7 +37,11 @@ class Util {
         }
     }
 };
+```
 
+Next we write a class `FloydWarshall` in which we will write all the necessary code for implementing the algorithm.
+
+```cpp
 class FloydWarshall {
    private:
     int v;       // v will store the number of nodes in the graph
@@ -75,10 +79,8 @@ class FloydWarshall {
         }
     }
 
-    // Standard Floyd Warshall Algorithm
-    // with little modification Now if we find
-    // that dis[i][j] > dis[i][k] + dis[k][j]
-    // then we modify next[i][j] = next[i][k]
+    // Standard Floyd Warshall Algorithm with little modification. 
+    // If we find that dis[i][j] > dis[i][k] + dis[k][j] then we modify next[i][j] = next[i][k]
     void computePaths() {
         for (int k = 0; k < this->v; k++) {
             for (int i = 0; i < this->v; i++) {
@@ -153,6 +155,8 @@ class FloydWarshall {
 };
 ```
 
+The provided code implements Floyd-Warshall algorithm to compute the shortest paths between all pairs of nodes in a weighted graph. The algorithm works by iteratively considering intermediate vertices and updating the shortest distances between nodes.
+
 The code first initializes a matrix to store the shortest distances between all pairs of nodes. The matrix is then updated iteratively, with each iteration considering a new intermediate node. For each iteration, the algorithm checks if the shortest path between two nodes can be improved by going through the intermediate node. If it can, then the shortest distance between the two nodes is updated.
 
 The code also includes a function for constructing the shortest path between two nodes. This function takes the source node and the destination node as input, and it returns a vector that contains the nodes in the shortest path from the source node to the destination node.
@@ -162,25 +166,28 @@ The code snippet can be used to find the shortest paths between all pairs of nod
 **Here is an example of how to use the code:**
 
 ```cpp
-vector<vector<int>> graph = {{0, 3, Util::INFINITY, 7},
-                              {8, 0, 2, Util::INFINITY},
-                              {5, Util::INFINITY, 0, 1},
-                              {2, Util::INFINITY, Util::INFINITY, 0}};
+int main(){
+    vector<vector<int>> graph = {{0, 3, Util::INFINITY, 7},
+                                {8, 0, 2, Util::INFINITY},
+                                {5, Util::INFINITY, 0, 1},
+                                {2, Util::INFINITY, Util::INFINITY, 0}};
 
-FloydWarshall fw = FloydWarshall(graph);
-fw.computePaths();
+    FloydWarshall fw = FloydWarshall(graph);
+    fw.computePaths();
 
-// Path from node 1 to 3
-vector<int> path = fw.constructPath(1, 3);
-FloydWarshall::printPath(path);
+    // Path from node 1 to 3
+    vector<int> path = fw.constructPath(1, 3);
+    FloydWarshall::printPath(path);
 
-// Path from node 0 to 2
-vector<int> path = fw.constructPath(0, 2);
-FloydWarshall::printPath(path);
+    // Path from node 0 to 2
+    vector<int> path = fw.constructPath(0, 2);
+    FloydWarshall::printPath(path);
 
-// Path from node 3 to 2
-vector<int> path = fw.constructPath(3, 2);
-FloydWarshall::printPath(path);
+    // Path from node 3 to 2
+    vector<int> path = fw.constructPath(3, 2);
+    FloydWarshall::printPath(path);
+    return 0;
+}
 ```
 
 This code will print the following output:
