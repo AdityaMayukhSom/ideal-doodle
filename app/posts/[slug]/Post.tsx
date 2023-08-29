@@ -1,24 +1,55 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import Markdown from "markdown-to-jsx";
 
-const useScript = (url: string) => {
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = url;
-    script.async = true;
-    document.body.appendChild(script);
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, [url]);
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { oneDark as CodeStyle } from "react-syntax-highlighter/dist/esm/styles/prism";
+
+const CodeBlock = ({
+    className,
+    children,
+}: {
+    children: any;
+    className: string;
+}) => {
+    let lang = "text"; // default monospaced text
+    if (className && className.startsWith("lang-")) {
+        lang = className.replace("lang-", "");
+    }
+    return (
+        <SyntaxHighlighter
+            wrapLines={true}
+            // wrapLongLines={true}
+            showLineNumbers={true}
+            language={lang}
+            style={CodeStyle}
+        >
+            {children}
+        </SyntaxHighlighter>
+    );
 };
+
+// markdown-to-jsx uses <pre><code/></pre> for code blocks.
+const PreBlock = ({ children, ...rest }: { children: any }) => {
+    if ("type" in children && children["type"] === "code") {
+        return CodeBlock(children["props"]);
+    }
+    return <pre {...rest}>{children}</pre>;
+};
+
 export default function Post({ content }: { content: string }) {
-  useScript("/js/prism.js");
-  return (
-    <article className="min-w-full prose line-numbers">
-      <Markdown>{content}</Markdown>
-    </article>
-  );
+    return (
+        <article className="min-w-full prose">
+            <Markdown
+                options={{
+                    overrides: {
+                        pre: PreBlock,
+                    },
+                }}
+            >
+                {content}
+            </Markdown>
+        </article>
+    );
 }

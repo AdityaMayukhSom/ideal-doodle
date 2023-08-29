@@ -257,7 +257,6 @@ function new_animation()
     y = 0,
     color = 0,
   }
-}
 ```
 
 Now each update, we can also `update()` the animation and apply its transform to the unit. If the animation runs out of frames, it will disappear and things will be back to normal.
