@@ -1,40 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --animation-depth: 1rem;
-  --animation-time: 0.5s;
-  --animation-delay: 0.3s;
+    --clipboard-font-size: 12px;
+    --clipboard-text-color: #ffffff;
+    --clipboard-background-color: #d4d4d454;
+    --clipboard-background-hover-color: #ababab4d;
+    --animation-depth: 1rem;
+    --animation-time: 0.5s;
+    --animation-delay: 0.3s;
+}
+
+pre,
+code {
+    font-family: "JetBrains Mono", monospace;
+}
+
+.code-toolbar {
+    position: relative;
+}
+
+button.copy-to-clipboard-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: var(--clipboard-font-size);
+    font-weight: 200;
+    justify-items: center;
+    align-items: center;
+    text-decoration: none;
+    color: var(--clipboard-text-color);
+    border-radius: 4px;
+    padding: 4px 10px;
+    column-gap: 8px;
+    background-color: var(--clipboard-background-color);
 }
 
 .slide-up-fade-in {
-  opacity: 0;
-  animation: fadeSlideUp var(--animation-time) ease-in-out forwards
-    var(--animation-delay);
+    opacity: 0;
+    animation: fadeSlideUp var(--animation-time) ease-in-out forwards
+        var(--animation-delay);
 }
 
 .slide-up-fade-in-container {
-  animation: fadeSlideUpContainer var(--animation-time) ease-in-out forwards;
+    animation: fadeSlideUpContainer var(--animation-time) ease-in-out forwards;
 }
 
 @keyframes fadeSlideUpContainer {
-  from {
-    transform: translateY(var(--animation-depth));
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    from {
+        transform: translateY(var(--animation-depth));
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes fadeSlideUp {
-  from {
-    opacity: 0;
-    transform: translateY(var(--animation-depth));
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    from {
+        opacity: 0;
+        transform: translateY(var(--animation-depth));
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
