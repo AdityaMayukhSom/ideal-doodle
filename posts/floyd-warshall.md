@@ -2,6 +2,8 @@
 title: "Floyd-Warshall Algorithm"
 subtitle: "The Floyd-Warshall algorithm is another classic algorithm in computer science, and it is similar to Djikstra's algorithm in many ways. However, the Floyd-Warshall algorithm is a dynamic programming algorithm, which means that it builds up the shortest paths from scratch, starting with the shortest paths between pairs of nodes that are directly connected."
 date: "2023-07-25"
+tags: ["algorithms", "graph"]
+author: "Aditya Mayukh Som"
 ---
 
 Graphs are commonly used to represent relationships between entities in various real-world scenarios, such as road networks, computer networks, and social networks. The shortest path problem involves finding the shortest distance between every pair of vertices in a graph.

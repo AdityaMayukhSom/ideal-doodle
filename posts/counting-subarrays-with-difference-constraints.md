@@ -1,7 +1,8 @@
 ---
 title: "Counting Subarrays with Difference Constraints"
-subtitle: "In this blog post, we will explore a problem that involves counting the number of subarrays in an array that satisfy a specific difference constraint. Given an array `nums` consisting of `n` integers and a given integer `k`, we are required to count the number of subarrays where the difference between the maximum and minimum elements is less than `k`. We will provide an in-depth explanation of the problem, present an efficient solution, and illustrate it with a C++ implementation."
+subtitle: "Counting the number of subarrays in an array that satisfy a specific difference constraint. Given an array `nums` consisting of `n` integers and a given integer `k`, we are required to count the number of subarrays where the difference between the maximum and minimum elements is less than `k`."
 date: "2023-07-26"
+author: "Aditya Mayukh Som"
 ---
 
 In this blog post, we will explore a problem that involves counting the number of subarrays in an array that satisfy a specific difference constraint. Given an array `nums` consisting of `n` integers and a given integer `k`, we are required to count the number of subarrays where the difference between the maximum and minimum elements is less than `k`. We will provide an in-depth explanation of the problem, present an efficient solution, and illustrate it with a C++ implementation.
